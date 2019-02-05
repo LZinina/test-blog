@@ -40,7 +40,7 @@
 
       @include('layouts.nav')
 
-      @include('layouts.jumbotron')
+      <!--@include('layouts.jumbotron')-->
 
     </div>
 
