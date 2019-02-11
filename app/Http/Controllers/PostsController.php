@@ -8,15 +8,29 @@ use Illuminate\Validation\Validator;
 
 use App\Post;
 
+
+
 class PostsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index','show']);
+    }
+
     public function  index()
     {
 
         $posts=Post::latest()->get();
 
-    	return view('posts.index',compact('posts'));
+    	$archives=Post::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')
+        ->groupBy('year','month')
+        ->get()
+        ->toArray();
+
+        return view('index',compact('posts','archives'));
     }
+
+    
 
      public function  show($id)
     {
@@ -40,9 +54,10 @@ class PostsController extends Controller
     			
     	]);
 
-    	Post::create(Request(['title','body']));
+        auth()->user()->publish(
+            new Post(request(['title','body']))
 
-    
+        );
 
     	return redirect('/');
     }

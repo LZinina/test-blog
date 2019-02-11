@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('partials.master')
 
 @section('content')
 
@@ -24,6 +24,6 @@
 
 		</form>
 
-		@include('layouts.errors')
+		@include('partials.errors')
 	</div>
 @endsection

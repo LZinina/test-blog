@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-//use Illuminate\Http\Request;
+use Illuminate\Http\Request;
+
 
 use App\User;
 
@@ -10,7 +11,7 @@ class RegistrationController extends Controller
 {
     public function create()
     {
-    	return view('sessions.create');
+    	return view('registration.create');
     }
 
     public function store()
@@ -21,7 +22,6 @@ class RegistrationController extends Controller
     		'password'=>'required|confirmed',
     		    			
     	]);
-
     	$user=User::create(Request(['name','email','password']));
 
     	auth()->login($user);
