@@ -12,22 +12,18 @@ use App\Post;
 
 class PostsController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth')->except(['index','show']);
-    }
-
+    
     public function  index()
     {
 
-        $posts=Post::latest()->get();
+        $posts=Post::latest()
 
-    	$archives=Post::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')
-        ->groupBy('year','month')
-        ->get()
-        ->toArray();
+        ->filter(request(['month','year']))
 
-        return view('index',compact('posts','archives'));
+        ->get();
+
+          	
+        return view('index',compact('posts'));
     }
 
     

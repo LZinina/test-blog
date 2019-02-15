@@ -14,8 +14,8 @@
         </a>
         
         <a class="btn btn-sm btn-outline-secondary mr-3" href="/register">Register</a>
-        <a class="btn btn-sm btn-outline-secondary" href="/login">Sign in</a>
-        
+        <a class="btn btn-sm btn-outline-secondary mr-3" href="/login">Sign in</a>
+        <a class="btn btn-sm btn-outline-secondary" href="/logout">Sign out</a>
       </div>
     </div>
   </header>

@@ -8,10 +8,15 @@
       <div class="p-3">
         <h4 class="font-italic">Archives</h4>
         <ol class="list-unstyled mb-0">
-          @foreach ($arсhives as $stats)
-          <li>
-            <a href="#">{{$stats['month']}}</a></li>
-          @endforeach  
+         @forelse ($archives as $item)
+            <li>
+                <a href="/?month={{$item->month}}&year={{$item->year}}">
+                    {{$item->month}} {{$item->year}} ({{$item->number}})
+                </a>
+            </li>
+        @empty
+            <li>Здесь пока ничего нет.</li>
+        @endforelse       
         </ol>
 
       </div>
