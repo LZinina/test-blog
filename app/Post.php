@@ -45,7 +45,10 @@ class Post extends Model
         return $archives;       
     }
 
-	
+	public function tags()
+    {
+       return $this->belongsToMany(Tag::class);
+    }
 
 	
 }

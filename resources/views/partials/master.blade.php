@@ -24,6 +24,12 @@
           font-size: 3.5rem;
         }
       }
+      #flash-message {
+        position:absolute;
+        bottom:20px;
+        right:20px;
+        z-index:10;
+      }
     </style>
     <!-- Custom styles for this template -->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
@@ -33,16 +39,18 @@
   
   <body>
    
-    <div class="container">
+    
 
+    @include('partials.header')
 
-      @include('partials.header')
-
-      @include('partials.nav')
-
-      <!--@include('partials.jumbotron')-->
-
+    @include('partials.nav')
+    @if ($flash = session('message'))
+    <div id="flash-message" class="alert alert-success" role="alert">
+        {{$flash}}
     </div>
+    @endif
+    <!--@include('partials.jumbotron')-->
+      
 
 <main role="main" class="container">
   

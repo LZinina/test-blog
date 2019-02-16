@@ -19,7 +19,21 @@
         @endforelse       
         </ol>
 
+        <h4 class="font-italic">Tags</h4>
+        <ol class="list-unstyled mb-0">
+         @forelse ($tags as $tag)
+            <li>
+                <a href="/posts/tags/{{$tag}}">
+                    {{$tag}}
+                </a>
+            </li>
+        @empty
+            <li>Здесь пока ничего нет.</li>
+        @endforelse       
+        </ol>
       </div>
+
+
 
       <div class="p-3">
         <h4 class="font-italic">Elsewhere</h4>

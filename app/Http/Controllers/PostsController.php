@@ -15,6 +15,7 @@ class PostsController extends Controller
     
     public function  index()
     {
+        
 
         $posts=Post::latest()
 
@@ -55,6 +56,9 @@ class PostsController extends Controller
 
         );
 
+        session()->flash('message','Your post has now been published.');
+
+        
     	return redirect('/');
     }
 }

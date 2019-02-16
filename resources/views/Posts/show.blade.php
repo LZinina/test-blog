@@ -10,6 +10,14 @@
 
  <p class="blog-post-meta">{{$post->created_at->toFormattedDateString()}} </p>
 
+ @if (count($post->tags))
+ 	<ul>
+ 		@foreach ($post->tags as $tag)
+ 		<a href="/posts/tags/{{$tag->name}}">{{$tag->name}}</a>
+ 		@endforeach
+ 	</ul>
+ @endif
+
  <p>{{$post->body}}</p>
 
  <div class="comments">
